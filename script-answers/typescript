@@ -1,0 +1,22 @@
+Script started on 2025-11-17 16:15:45+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+[1m[7m%[27m[1m[0m                                                                                                                        ]2;candylia@candy-desktop:~/Courses/fullstack/fullstack-containers/script-answers]1;..cript-answers]7;file://candy-desktop/home/candylia/Courses/fullstack/fullstack-containers/script-answers\[0m[27m[24m[J
+[1;36mfullstack-containers/script-answers[0m on [1;35m main[0m [1;31m[?][0m 
+[1;32m❯[0m [K[?1h=[?2004hddocker container run =it   -it ubuntu bash[?1l>[?2004l
+]2;docker container run -it ubuntu bash]1;docker[?2004h]0;root@302994444d0e: /root@302994444d0e:/# ls
+[?2004l[0m[01;36mbin[0m  [01;34mboot[0m  [01;34mdev[0m  [01;34metc[0m  [01;34mhome[0m  [01;36mlib[0m  [01;36mlib64[0m  [01;34mmedia[0m  [01;34mmnt[0m  [01;34mopt[0m  [01;34mproc[0m  [01;34mroot[0m  [01;34mrun[0m  [01;36msbin[0m  [01;34msrv[0m  [01;34msys[0m  [30;42mtmp[0m  [01;34musr[0m  [01;34mvar[0m
+[?2004h]0;root@302994444d0e: /root@302994444d0e:/# cd usr
+[?2004l[?2004h]0;root@302994444d0e: /usrroot@302994444d0e:/usr# cd src
+[?2004l[?2004h]0;root@302994444d0e: /usr/srcroot@302994444d0e:/usr/src# cs d app
+[?2004lbash: cd: app: No such file or directory
+[?2004h]0;root@302994444d0e: /usr/srcroot@302994444d0e:/usr/src# mdk  kdir app
+[?2004l[?2004h]0;root@302994444d0e: /usr/srcroot@302994444d0e:/usr/src# cd app
+[?2004l[?2004h]0;root@302994444d0e: /usr/src/approot@302994444d0e:/usr/src/app# touch indde  ex.js
+[?2004l[?2004h]0;root@302994444d0e: /usr/src/approot@302994444d0e:/usr/src/app# ls
+[?2004lindex.js
+[?2004h]0;root@302994444d0e: /usr/src/approot@302994444d0e:/usr/src/app# exit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                                                        ]2;candylia@candy-desktop:~/Courses/fullstack/fullstack-containers/script-answers]1;..cript-answers]7;file://candy-desktop/home/candylia/Courses/fullstack/fullstack-containers/script-answers\[0m[27m[24m[J
+[1;36mfullstack-containers/script-answers[0m on [1;35m main[0m [1;31m[?][0m took [1;33m26s[0m 
+[1;32m❯[0m [K[?1h=[?2004heere eee exit[?1l>[?2004l
+]2;exit]1;exit
+Script done on 2025-11-17 16:16:22+02:00 [COMMAND_EXIT_CODE="0"]
