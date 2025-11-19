@@ -6,6 +6,7 @@ services:
       - "3123:3000"
     environment:
       MONGO_URL: mongodb://the_username:the_password@mongo:27017/the_database?authSource=admin
+      REDIS_URL: redis://redis:6379
   
   mongo:
     image: mongo:6
