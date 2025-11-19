@@ -15,7 +15,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: the_password
       MONGO_INITDB_DATABASE: the_database
     volumes:
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo_data:/data/db
     ports:
       - "3456:27017"
 
@@ -24,3 +25,6 @@ services:
     container_name: redis
     ports:
       - "6378:6379"
+
+volumes:
+  mongo_data:
