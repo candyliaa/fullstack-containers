@@ -40,7 +40,7 @@ singleRouter.delete('/', async (req, res) => {
 });
 
 /* GET todo. */
-singleRouter.get('/:id', async (req, res) => {
+singleRouter.get('/', async (req, res) => {
   const { id } = req.params;
   const todo = await Todo.findById(id);
   if (!todo) {
@@ -50,24 +50,17 @@ singleRouter.get('/:id', async (req, res) => {
 });
 
 /* PUT todo. */
-singleRouter.put('/:id', async (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
-
-  const updatedTodo = await Todo.findByIdAndUpdate(
-    id,
-    {
-      text: body.text,
-      done: body.done,
-    },
-    { new: true, runValidators: true }
-  )
-
-  if (!updatedTodo) {
-    return res.status(404).send({ error: 'Todo not found' });
-  }
-
-  res.json(updatedTodo);
+singleRouter.put('/', async (req, res) => {
+    const body = req.body;
+    const updatedTodo = await Todo.findByIdAndUpdate(
+        req.todo.id,
+        {
+            text: body.text,
+            done: true
+        },
+        { new: true, runValidators: true }
+    );
+    res.json(updatedTodo);
 });
 
 router.use('/:id', findByIdMiddleware, singleRouter)

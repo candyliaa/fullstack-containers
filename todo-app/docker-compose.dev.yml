@@ -17,17 +17,37 @@ services:
       dockerfile: dev.Dockerfile
     volumes:
       - ./todo-backend/:/usr/src/backend
+    environment:
+      MONGO_URL: mongodb://mongo:27017/tododb
+      REDIS_URL: redis://redis:6379
     ports:
       - 8000:3000
     container_name: todo-backend-dev
 
+  mongo:
+    image: mongo:8
+    container_name: todo-mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:7
+    container_name: todo-redis
+    ports:
+      - 6379:6379
+
   nginx:
     image: nginx:1.20.1
     volumes:
-      - ./nginx.dev.conf:/etc/nginx/nginx.dev.conf:ro
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
     ports:
       - 8080:80
     container_name: reverse-proxy
     depends_on:      
       - app
       - backend
+
+volumes:
+  mongo-data: 
