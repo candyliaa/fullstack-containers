@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo:7.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: phonebook
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./backend/phonebookbackend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      PORT: 3001
+      MONGODB_URI: mongodb://mongo:27017/phonebook
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/phonebook/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  mongo-data:
