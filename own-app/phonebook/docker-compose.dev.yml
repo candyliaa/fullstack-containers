@@ -1,0 +1,54 @@
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: phonebook-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: phonebook
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./backend/phonebookbackend
+      dockerfile: dev.Dockerfile
+    container_name: phonebook-backend
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      MONGODB_URI: mongodb://mongo:27017/phonebook
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend/phonebookbackend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./frontend/phonebook
+      dockerfile: dev.Dockerfile
+    container_name: phonebook-frontend
+    volumes:
+      - ./frontend/phonebook:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:alpine
+    container_name: phonebook-nginx
+    ports:
+      - "8080:80"
+    volumes:
+       - ./frontend/phonebook/nginx.dev.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  mongo-data:
